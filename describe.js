@@ -3,11 +3,7 @@ function sum(a, b) {
 }
 
 function sumOf(numbers) {
-  let result = 0;
-  numbers.forEach(n => {
-    result += n;
-  });
-  return result;
+  return numbers.reduce((acc, cur) => acc + cur, 0)
 }
 
 module.exports = {
