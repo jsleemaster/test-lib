@@ -21,6 +21,7 @@ const TodoApp = () => {
     text => {
       // 새 항목 추가 후
       setTodos(
+        todos =>
         todos.concat({
           id: nextId.current,
           text,
@@ -30,23 +31,23 @@ const TodoApp = () => {
       // nextId 값에 1 더하기
       nextId.current += 1;
     },
-    [todos]
+    []
   );
   const onToggle = useCallback(
     id => {
-      setTodos(
+      setTodos(todos =>
         todos.map(todo =>
           todo.id === id ? { ...todo, done: !todo.done } : todo
         )
       );
     },
-    [todos]
+    []
   );
   const onRemove = useCallback(
     id => {
-      setTodos(todos.filter(todo => todo.id !== id));
+      setTodos(todos => todos.filter(todo => todo.id !== id));
     },
-    [todos]
+    []
   );
   return <>
     <TodoForm onInsert={onInsert} />
